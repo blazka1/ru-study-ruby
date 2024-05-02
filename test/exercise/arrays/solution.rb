@@ -7,16 +7,12 @@ module Exercise
       end
 
       def search(arr, query, low = 0, high = arr.length - 1)
-        return -1 if low > high
+        return -1 if low > high || query < arr[low] || query > arr[high]
 
         mid = low + ((high - low) / 2)
-        if arr[mid] == query
-          mid
-        elsif arr[mid] > query
-          search(arr, query, low, mid - 1)
-        else
-          search(arr, query, mid + 1, high)
-        end
+        return mid if arr[mid] == query
+
+        arr[mid] > query ? search(arr, query, low, mid - 1) : search(arr, query, mid + 1, high)
       end
 
       def find_max(array)
