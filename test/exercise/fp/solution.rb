@@ -4,8 +4,8 @@ module Exercise
       # Обратиться к параметрам фильма можно так:
       # film["name"], film["rating_kinopoisk"], film["rating_imdb"],
       # film["genres"], film["year"], film["access_level"], film["country"]
-      def rating(_array)
-        valid_films = _array.select do |film|
+      def rating(array)
+        valid_films = array.select do |film|
           countries = film['country'].split(',') if film['country']
           film['rating_kinopoisk'].to_f.positive? && countries && countries.size > 1
         end
@@ -19,9 +19,9 @@ module Exercise
         end
       end
 
-      def chars_count(_films, _threshold)
-        kinopoisk_list = _films.select do |film|
-          film['rating_kinopoisk'].to_f >= _threshold
+      def chars_count(films, threshold)
+        kinopoisk_list = films.select do |film|
+          film['rating_kinopoisk'].to_f >= threshold
         end
 
         kinopoisk_list.reduce(0) do |sum, film|
