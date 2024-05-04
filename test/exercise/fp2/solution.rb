@@ -5,7 +5,15 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each; end
+      def my_each
+        index = 0
+        while index < self.length
+          yield self[index]
+          index += 1
+        end
+        self
+      end
+      
 
       # Написать свою функцию my_map
       def my_map; end
