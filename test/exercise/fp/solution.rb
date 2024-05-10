@@ -11,12 +11,7 @@ module Exercise
         end
 
         ratings = valid_films.map { |film| film['rating_kinopoisk'].to_f }
-
-        if ratings.size.positive?
-          ratings.reduce(0.0) { |sum, rating| sum + rating } / ratings.size
-        else
-          0
-        end
+        ratings.empty? ? 0 : ratings.reduce(0.0) { |sum, rating| sum + rating } / ratings.size
       end
 
       def chars_count(films, threshold)
